@@ -104,12 +104,19 @@ int main(void)
 		if(newHeadX == xf && newHeadY == yf)
 		{
 			timerL = 1;
-			printf("%f\n",timerL);
+//			printf("%f\n",timerL);
+		for(int i = 1; i < SnakeCount;i++)
+		{
+			if(zmekax[0] == zmekax[i] && zmekay[0] == zmekay[i])
+			{
+				gameOver = 1;
+			}
+		}
 			if(timerL < 0.2)
 			{
 				timerL = 0.2;
 			}	
-			printf("IN\n");
+		//	printf("IN\n");
 			SnakeCount++;
 			yf = 1 +  rand() %( 7 - 1 + 1);
 			xf = 1 +  rand() % (15 - 1 + 1);
@@ -138,9 +145,9 @@ int main(void)
 
 		timer = 0;
 
-		printf("x: %f %f\n",zmekax[0], xf);
-		printf("y: %f %f\n",zmekay[0], yf);
-		printf("\n");
+	//	printf("x: %f %f\n",zmekax[0], xf);
+	//	printf("y: %f %f\n",zmekay[0], yf);
+	//	printf("\n");
 	}
 	
 
