@@ -12,7 +12,7 @@ int main(void)
     int score = 0;
     char color[] = "RED";
 
-    InitWindow(screenWidth, screenHeight, "Move the red square");
+    InitWindow(screenWidth, screenHeight, "Move the snake");
     SetTargetFPS(60);
     int radius = 20;
     const float speed = 250.0;
@@ -89,6 +89,13 @@ int main(void)
 	{	
 		int newHeadX = zmekax[0] + xspeed;
 		int newHeadY = zmekay[0] + yspeed;
+		for(int i = 1; i < SnakeCount;i++)
+		{
+			if(zmekax[0] == zmekax[i] && zmekay[0] == zmekay[i])
+			{
+				gameOver = 1;
+			}
+		}
 		if(newHeadX == xf && newHeadY == yf)
 		{	
 			printf("IN\n");
