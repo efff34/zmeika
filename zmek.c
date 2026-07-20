@@ -33,7 +33,7 @@ int main(void)
 	zmekax[0] = 0;
 	zmekay[0] = 1;
 	
-	int SnakeCount = 1;	
+	int SnakeCount = 3;	
 
 	int xspeed = 1;
 	int yspeed = 0;
@@ -45,7 +45,8 @@ int main(void)
 	float xPe = 50;
 	float yPe = 50;
     while (!WindowShouldClose())
-    {		
+    {	
+    	float timerL = 0.5;	    
 	 int mX = GetMouseX();
 	 timer += GetFrameTime();
 	// printf("%f\n",timer);
@@ -84,20 +85,30 @@ int main(void)
 		zmekax[0] = 15;
 		gameOver = 1;	
 	}
+	
+	for(int i = 1; i < SnakeCount;i++)
+	{
+		if(zmekax[0] == zmekax[i] && zmekay[0] == zmekay[i])
+		{
+			gameOver = 1;
+		}
+	}
+	if(timerL == 1)
+	{
 
-	if (timer > 0.5) 
+	}
+	if (timer > timerL) 
 	{	
 		int newHeadX = zmekax[0] + xspeed;
 		int newHeadY = zmekay[0] + yspeed;
-		for(int i = 1; i < SnakeCount;i++)
-		{
-			if(zmekax[0] == zmekax[i] && zmekay[0] == zmekay[i])
-			{
-				gameOver = 1;
-			}
-		}
 		if(newHeadX == xf && newHeadY == yf)
-		{	
+		{
+			timerL = 1;
+			printf("%f\n",timerL);
+			if(timerL < 0.2)
+			{
+				timerL = 0.2;
+			}	
 			printf("IN\n");
 			SnakeCount++;
 			yf = 1 +  rand() %( 7 - 1 + 1);
